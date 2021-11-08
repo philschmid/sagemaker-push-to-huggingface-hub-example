@@ -126,5 +126,8 @@ if __name__ == "__main__":
     # evaluate model
     eval_result = trainer.evaluate(eval_dataset=test_dataset)
 
+    # save best model, metrics and create model card
+    trainer.push_to_hub()
+
     # Saves the model to s3 uses os.environ["SM_MODEL_DIR"] to make sure checkpointing works
     trainer.save_model(os.environ["SM_MODEL_DIR"])
